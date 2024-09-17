@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_09_13_172737) do
+ActiveRecord::Schema[8.0].define(version: 2024_09_17_174301) do
   create_table "accounts", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -44,6 +44,15 @@ ActiveRecord::Schema[8.0].define(version: 2024_09_13_172737) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "assignments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "bubble_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bubble_id"], name: "index_assignments_on_bubble_id"
+    t.index ["user_id"], name: "index_assignments_on_user_id"
   end
 
   create_table "boosts", force: :cascade do |t|
@@ -111,6 +120,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_09_13_172737) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "assignments", "bubbles"
+  add_foreign_key "assignments", "users"
   add_foreign_key "sessions", "users"
   add_foreign_key "taggings", "bubbles"
   add_foreign_key "taggings", "tags"

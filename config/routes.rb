@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :bubbles do
     resource :image, controller: "bubbles/images"
 
+    resources :assignments
     resources :boosts
     resources :comments
     resources :tags, shallow: true

@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   belongs_to :account
 
+  has_many :assignments
+  has_many :assigned, through: :assignments, source: :bubble
+
   has_many :sessions, dependent: :destroy
   has_secure_password validations: false
 

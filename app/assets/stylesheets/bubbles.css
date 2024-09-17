@@ -134,6 +134,29 @@
     }
   }
 
+  &.bubble__assignee {
+    aspect-ratio: 1;
+    inset: -1cqi auto auto 28cqi;
+    padding: 0.4em;
+
+    select {
+      inset: 0;
+      position: absolute;
+    }
+
+    @media (hover: hover) {
+      .windshield .bubble:hover & {
+        transform: translate(1rem, 0);
+      }
+    }
+  }
+
+  &.bubble__assignee--new {
+    .windshield & {
+      display: none;
+    }
+  }
+
   &.bubble__attachment {
     aspect-ratio: 1;
     inset: -4cqi 24cqi auto auto;
@@ -199,7 +222,7 @@
     white-space: nowrap;
     z-index: 1;
 
-    &:has(.input:not([type="file"], [type="date"])) {
+    &:has(.input:not([type="file"], [type="date"], select)) {
       border-radius: 2em;
       padding: 0.2em 0.5em;
 

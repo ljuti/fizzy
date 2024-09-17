@@ -7,6 +7,9 @@ class Bubble < ApplicationRecord
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
 
+  has_many :assignments, dependent: :destroy
+  has_many :assignees, through: :assignments, source: :user
+
   has_one_attached :image, dependent: :purge_later
 
   enum :color, %w[

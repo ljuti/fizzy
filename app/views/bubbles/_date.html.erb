@@ -2,7 +2,7 @@
   <%= form_with model: bubble, data: { controller: "form" } do |form| %>
     <label class="bubble__bubble bubble__meta bubble__date">
       <%= bubble.due_on.strftime("%b <br> %d").html_safe %>
-      <%= form.date_field :due_on, class: "input input--hidden", data: { action: "change->form#submit click->form#showPicker"} %>
+      <%= form.date_field :due_on, class: "input input--hidden", data: { action: "change->form#submit click->form#showPicker" } %>
       <span class="for-screen-reader">Change the due date</span>
     </label>
   <% end %>
